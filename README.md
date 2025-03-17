@@ -1,6 +1,6 @@
 # Routing-integration-tests
 
-**API Test Automation Framework: Tips**
+**API Test Automation Framework**
 
 _The objective of this project is to provide API tests to Trips endpoint._
 

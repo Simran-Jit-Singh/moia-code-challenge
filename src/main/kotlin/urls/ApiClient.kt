@@ -37,7 +37,7 @@ object ApiClient {
         val inputStream = object {}.javaClass.classLoader.getResourceAsStream("config.json")
             ?: throw IllegalArgumentException("Config file not found!")
 
-        //Deserialize json object to trips
+        //Deserialize json object to Trip.kt
         val json = inputStream.bufferedReader().use { it.readText() }
         return jacksonObjectMapper().readValue(json, TripResults::class.java)
     }

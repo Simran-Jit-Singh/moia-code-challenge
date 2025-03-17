@@ -1,0 +1,71 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.9.22'
+}
+
+version '1.0-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(16))
+    }
+}
+
+kotlin {
+    jvmToolchain(16)
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+    testImplementation group: 'io.cucumber', name: 'cucumber-java', version: '7.14.0'
+    testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: '7.14.0'
+    implementation group: 'io.cucumber', name: 'cucumber-picocontainer', version: '5.6.0'
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
+    implementation group: 'io.rest-assured', name: 'rest-assured', version: '5.1.0'
+    testImplementation group: 'io.rest-assured', name: 'kotlin-extensions', version: '4.3.3'
+    implementation group: 'com.fasterxml.jackson.module', name: 'jackson-module-kotlin', version: '2.13.3'
+    implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.13.3'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.13.3'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.3'
+    implementation group: 'org.assertj', name: 'assertj-core', version: '3.14.0'
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "16"
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+task cucumber() {
+    dependsOn assemble, compileTestJava
+//    def env = System.getProperty("env")
+//    if (env == null) {
+//        env = 'staging'
+//    }
+    def cucumberTag = []
+    cucumberTag.add('--tags')
+    cucumberTag.add('not @bug')
+    cucumberTag.add('--tags')
+    cucumberTag.add('not @wip')
+    cucumberTag.add('--tags')
+    cucumberTag.add('not @inactive')
+
+    doLast {
+        javaexec {
+//            jvmArgs = ["-Denv=$env"]
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['-p', 'pretty', '-p', 'html:cucumberReports/cucumber.html', '-p', 'json:cucumberReports/cucumber.json', '--glue', 'com.moia.setup', 'src/test/resources', '--tags', tag,] + cucumberTag
+        }
+    }
+}
+

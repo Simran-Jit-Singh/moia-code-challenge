@@ -1,0 +1,11 @@
+/build/
+/.idea/
+/.gradle/
+/gradlew.bat
+/cucumberReports/
+.project
+.settings
+bin/
+.classpath
+.env
+.DS_Store

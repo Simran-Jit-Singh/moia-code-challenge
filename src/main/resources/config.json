@@ -1,0 +1,58 @@
+[
+  {
+    "tripId": "a12c34e5-678d-90ef-1234-56789abcdefg",
+    "customerId": "c56d78e9-012f-3456-789a-bcdef012g34h",
+    "timestamp": 1729087000,
+    "origin": "Hamburg Hauptbahnhof",
+    "pickup_stop": "Rathausmarkt",
+    "dropoff_stop": "Jungfernstieg",
+    "destination": "Jungfernstieg",
+    "pickup_interval": {"start": 1729087100, "end": 1729087200},
+    "dropoff_interval": {"start": 1729087300, "end": 1729087400},
+    "order_time": 1729086900,
+    "service_class_id": "1",
+    "state": "ORDERED"
+  },
+  {
+    "tripId": "a12c34e5-678d-90ef-1234-56789abcdefg",
+    "customerId": "c56d78e9-012f-3456-789a-bcdef012g34h",
+    "timestamp": 1729087010,
+    "state": "ACCEPTED"
+  },
+  {
+    "tripId": "a12c34e5-678d-90ef-1234-56789abcdefg",
+    "customerId": "c56d78e9-012f-3456-789a-bcdef012g34h",
+    "timestamp": 1729087150,
+    "pickup_time": 1729087150,
+    "state": "PICKED_UP"
+  },
+  {
+    "tripId": "a12c34e5-678d-90ef-1234-56789abcdefg",
+    "customerId": "c56d78e9-012f-3456-789a-bcdef012g34h",
+    "timestamp": 1729087350,
+    "pickup_time": 1729087200,
+    "dropoff_time": 1729087300,
+    "dropoff_stop": "Berlin Hbf",
+    "state": "DROPPED_OFF"
+  },
+  {
+    "tripId": "b23d45f6-789e-012f-3456-789abcdef012",
+    "customerId": "d78f90g1-2345-678a-bcde-f012g345h678",
+    "timestamp": 1729087050,
+    "origin": "Elbphilharmonie",
+    "pickup_stop": "Landungsbrücken",
+    "dropoff_stop": "Altona Bahnhof",
+    "destination": "Altona Bahnhof",
+    "pickup_interval": {"start": 1729087150, "end": 1729087250},
+    "dropoff_interval": {"start": 1729087350, "end": 1729087450},
+    "order_time": 1729087000,
+    "service_class_id": "1",
+    "state": "ORDERED"
+  },
+  {
+    "tripId": "b23d45f6-789e-012f-3456-789abcdef012",
+    "customerId": "d78f90g1-2345-678a-bcde-f012g345h678",
+    "timestamp": 1729087100,
+    "state": "CANCELLED"
+  }
+]
